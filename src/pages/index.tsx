@@ -1,8 +1,11 @@
+import Heading from "../components/heading/heading"
 
 
 const index = () => {
   return (
-    <div>index</div>
+    <div>
+  <Heading tag="h1"> heading</Heading>
+    </div>
   )
 }
 
