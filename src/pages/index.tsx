@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Button, Input, Rating, Tag, Text, TextArea } from "../components"
+import { Button, Card, Input, Rating, Tag, Text, TextArea } from "../components"
 import Heading from "../components/heading/heading"
 
 
@@ -10,6 +10,7 @@ const index = () => {
   return (
     <div>
   <Heading tag="h1"> heading</Heading>
+  <Card color="primary"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita eveniet id quis aliquam culpa debitis officiis quasi, eos rem tenetur?</Card>
   <Tag color="primary"> primariy</Tag>
     <Tag color="green"> green</Tag>
       <Tag color="red"> red</Tag>
