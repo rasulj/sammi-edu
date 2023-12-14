@@ -1,9 +1,10 @@
-
+import styles from './header.module.css'
+import cn  from 'classnames'
 import { HeaderProps } from './header.props'
 
 const Header = ({ className , ...props}:HeaderProps) => {
   return (
-    <div  {...props}>header</div>
+    <header className={ cn( className)}  {...props}>header</header>
   )
 }
 
