@@ -4,8 +4,12 @@ import Heading from "../components/heading/heading"
 import { withLayout } from "../layout/layout"
 import { GetServerSideProps } from "next"
 import axios from 'axios'
+import { MenuItem } from "../interfaces/menu.interface"
+import { PageCategory } from "../interfaces/page.interface"
 
-const index = ({data}:any) => {
+
+const index = ({data}:HomePageProps) => {
+
   
   const [isClik, setIsClick]= useState<boolean>(false)
    const [rating, setRating]= useState<number>(3)
@@ -32,13 +36,18 @@ const index = ({data}:any) => {
 
 export default withLayout(index)
 
-export const getServerSideProps:GetServerSideProps<any> = async()=>{
-
-  const {data} = await axios.post('http://localhost:8100/page-find/',{firstCategory:0})
-
+export const getServerSideProps:GetServerSideProps<HomePageProps> = async()=>{
+    const firstCategory = PageCategory.Courses ;
+  const {data:menu} = await axios.post(`${process.env.NEXT_PUBLIC_DOMAIN}/api/page-find`,{firstCategory})
+ 
   return{
     props:{
-    data,
+    menu,
+    firstCategory,
     }
   }
+}
+export interface HomePageProps  extends Record<string,unknown> {
+  menu:MenuItem[]
+  firstCategory:number
 }

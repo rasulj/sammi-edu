@@ -4,6 +4,7 @@ import Header from "./header/header"
 import { LayoutProps } from "./layout.props"
 import Sidebar from "./sidebar/sidebar"
 import styles from './layout.module.css'
+import { AppContextProvider, IAppContext } from "../context/app.context"
 
 
 const Layout = ({children ,className ,...props}:LayoutProps):JSX.Element => {
@@ -18,17 +19,16 @@ const Layout = ({children ,className ,...props}:LayoutProps):JSX.Element => {
   )
 }
 
-export const withLayout =  <T extends Record<string,unknown> >(Component:FunctionComponent<T>)=>{
+export const withLayout =  <T extends Record<string,unknown> & IAppContext >(Component:FunctionComponent<T>)=>{
  
   return  function loyoutComponent (props:T){
-<<<<<<< HEAD
-     
-=======
-     console.log(props)
->>>>>>> f6fa9353c0bf2984d0fa4185ff07f383176772de
-   return <Layout>
+
+   return <AppContextProvider menu={props.menu} firstCategory={props.firstCategory}>
+     <Layout>
      <Component {...props}/>
     </Layout>
+   </AppContextProvider>
+  
        
   }
 }
