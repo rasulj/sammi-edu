@@ -1,14 +1,20 @@
 import axios from "axios"
 import { GetServerSideProps } from "next"
-import { MenuItem, PageItem } from "../../interfaces/menu.interface"
+import { MenuItem, } from "../../interfaces/menu.interface"
 import { ProductModel } from "../../interfaces/product.interface"
 import { withLayout } from "../../layout/layout"
 import { firstLevelMenu } from "../../helpers/constants"
+import CoursePageComponent from "../../page-components/cours-component/course-page-component"
+import { PageModel } from "../../interfaces/page.interface"
 
 
-const Index = ({ menu}:PageProps) => {
+const Index = ({ page,product ,firstCategory}:PageProps) => {
+
+  
   return (
-    <div>Index</div>
+    <div>
+      <CoursePageComponent page={page} products={product} firstCategory={firstCategory}/>
+    </div>
   )
 }
 
@@ -17,7 +23,7 @@ export default withLayout(Index)
 export const getServerSideProps:GetServerSideProps<PageProps> = async({query})=>{
 
    const {type ,slug} = query
-  
+   console.log(type)
   if(!type){
     return { notFound:true}
   }
@@ -44,7 +50,7 @@ export interface PageProps extends Record<string,unknown> {
      firstCategory: number
      menu:MenuItem[],
      product:ProductModel[]
-     page:PageItem,
+     page:PageModel,
 
  
 }
