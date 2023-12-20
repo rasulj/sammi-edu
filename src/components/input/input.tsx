@@ -3,7 +3,7 @@ import cn from 'classnames'
 import { InputProps } from './input.props'
 const Input = ({className ,...props}:InputProps) => {
   return (
-    <input className={cn(styles.input)} {...props}/>
+    <input className={cn(styles.input, className)} {...props}/>
   )
 }
 

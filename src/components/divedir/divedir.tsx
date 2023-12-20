@@ -1,10 +1,10 @@
 import styles from './diveder.module.css'
 import { DividerProps } from './divider.props'
-
-const Divedir = ({className , ...props}:DividerProps) => {
+import cn from 'classnames'
+const Dividir = ({className , ...props}:DividerProps) => {
   return (
-    <hr className={styles.divider} {...props}></hr>
+    <hr className={ cn(styles.divider,className)} {...props}></hr>
   )
 }
 
-export default Divedir
+export default Dividir
