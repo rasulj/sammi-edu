@@ -5,6 +5,7 @@ import Menu from "../menu/menu"
 import Link from "next/link"
 import Logo from '../logo.svg'
 import Divedir from "../../components/divedir/divedir"
+import { Search } from "../../components"
 
 
 const Sidebar = ({ className ,...props}:SidebarProps):JSX.Element => {
@@ -14,7 +15,7 @@ const Sidebar = ({ className ,...props}:SidebarProps):JSX.Element => {
         <Logo/>
        </Link>
        <Divedir/>
-         <div> sorch....</div>
+        <Search/>
          <Menu/>
     </div>
   )

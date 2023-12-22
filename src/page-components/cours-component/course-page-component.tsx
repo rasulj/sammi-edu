@@ -1,7 +1,7 @@
 
 import styles from './course-page-component.module.css';
 import cn from 'classnames';
-import { Adventags, Heading,  HhData,  Product,  Tag, Text } from '../../components';
+import { Adventags, Heading,  HhData,  Product,  Sort,  Tag, Text } from '../../components';
 import { CoursePageComponentProps } from './course-page-component-props';
 
 
@@ -13,7 +13,7 @@ const CoursePageComponent = ({ firstCategory, page, products }: CoursePageCompon
 			{/* TITLE */}
 			<div className={styles.title}>
 				<Heading tag='h1'>{page.title}</Heading>
-				<div>Sort...</div>
+				 <Sort/>
 			</div>
 
 			{/* PRODUCTS */}
