@@ -9,6 +9,7 @@ import { PageModel } from "../../interfaces/page.interface"
 
 
 const Index = ({ page,product ,firstCategory}:PageProps) => {
+console.log(product);
 
   
   return (
@@ -23,7 +24,7 @@ export default withLayout(Index)
 export const getServerSideProps:GetServerSideProps<PageProps> = async({query})=>{
 
    const {type ,slug} = query
-   console.log(type)
+
   if(!type){
     return { notFound:true}
   }
@@ -35,8 +36,10 @@ export const getServerSideProps:GetServerSideProps<PageProps> = async({query})=>
   }
 
   const {data:menu} = await axios.post(`${process.env.NEXT_PUBLIC_DOMAIN}/api/page-find`,{firstCategory:firstCategoryItem.id})
-const {data:page} = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN}/api/page-find/${slug}`)
-const {data:product} = await axios.post(`${process.env.NEXT_PUBLIC_DOMAIN}/api/product-find`,{ category:slug,})
+  const {data:page} = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN}/api/page-find/${slug}`)
+  const {data:product} = await axios.post(`${process.env.NEXT_PUBLIC_DOMAIN}/api/product-find`,{ category:slug,})
+
+
   return{
     props:{
     firstCategory:firstCategoryItem.id,

@@ -10,6 +10,7 @@ import Rating from '../rating/rating'
 import { Button, Divider, Input, Review, ReviewForm, TextArea } from '..'
 
 
+
 const Product = ({ product, className, ...props }: ProductProps): JSX.Element => {
 	const [reviewOpen, setReviewOpen] = useState<boolean>(false);
 
@@ -105,6 +106,8 @@ const Product = ({ product, className, ...props }: ProductProps): JSX.Element =>
 				))}
 				<ReviewForm productid={product._id} />
 			</Card>
+  
+
 		</div>
 	);
 };
