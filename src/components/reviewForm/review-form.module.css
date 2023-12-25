@@ -2,7 +2,7 @@
 	display: grid;
 	grid-template-columns: [start] auto 1fr auto auto [end];
 	align-items: center;
-	gap: 10px;
+	gap: 30px 30px;
 	font-size: 14px;
 	line-height: 24px;
 }
@@ -28,7 +28,7 @@
 	margin-left: 15px;
 }
 
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 793px) {
 	.reviewForm {
 		grid-template-columns: [start] 1fr 1fr [end];
 	}
@@ -39,7 +39,35 @@
 		justify-self: normal;
 	}
 }
+.panel {
+	padding: 20px;
+	position: relative;
+	border-radius: 5px;
+	margin-top: 20px;
+}
 
+.success {
+	background-color: var(--green-light);
+}
+
+.error {
+	background-color: var(--red-light);
+}
+
+.error .close path {
+	stroke: var(--red);
+}
+
+.successTitle {
+	font-weight: bold;
+}
+
+.close {
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	cursor: pointer;
+}
 @media screen and (max-width: 570px) {
 	.reviewForm {
 		grid-template-columns: [start] 1fr [end];

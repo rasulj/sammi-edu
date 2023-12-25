@@ -9,9 +9,7 @@ import { PageModel } from "../../interfaces/page.interface"
 
 
 const Index = ({ page,product ,firstCategory}:PageProps) => {
-console.log(product);
 
-  
   return (
     <div>
       <CoursePageComponent page={page} products={product} firstCategory={firstCategory}/>

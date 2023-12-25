@@ -1,4 +1,4 @@
-.textarea {
+.textArea {
 	padding: 7px 15px;
 	color: var(--black);
 	border: none;
@@ -9,8 +9,23 @@
 	line-height: 22px;
 	border-radius: 5px;
 	font-family: var(--font-family);
-    width: 100%;
+	width: 100%;
 }
-.textarea::placeholder {
+
+.textArea::placeholder {
 	color: var(--gray);
+}
+.error {
+	border: 2px solid var(--red);
+}
+
+.textAreaWrapper {
+	position: relative;
+}
+
+.errorMessage {
+	position: absolute;
+	bottom: -15px;
+	left: 0;
+	color: var(--red);
 }
