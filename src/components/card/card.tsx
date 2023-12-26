@@ -1,12 +1,14 @@
 import { CardProps } from "./card.props"
 import styles from './card.module.css'
 import cn from 'classnames'
-const Card = ({ color="primary",children,className, ...props}:CardProps) => {
+import { ForwardedRef, forwardRef } from "react"
+const Card = forwardRef(({ color="primary",children,className, ...props}:CardProps, ref:ForwardedRef<HTMLDivElement>) => {
   return (
     <div className={cn(styles.card,className ,{
         [styles.primariy]: color == 'primary'
-    })}> {children} </div>
+    })} ref={ref}> {children} </div>
   )
 }
+)
 
 export default Card

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import styles from './product.module.css'
 import { ProductProps } from './product.props'
 import Card from '../card/card'
@@ -14,6 +14,11 @@ import { Button, Divider, Input, Review, ReviewForm, TextArea } from '..'
 const Product = ({ product, className, ...props }: ProductProps): JSX.Element => {
 	const [reviewOpen, setReviewOpen] = useState<boolean>(false);
 
+  const reivewRef = useRef<HTMLDivElement>(null)
+	const scrollToReview = () =>{
+		setReviewOpen(true)
+		reivewRef.current?.scrollIntoView({behavior:'smooth' ,block:"start"})
+	}
 	return (
 		<div className={className} {...props}>
 			<Card color='primary' className={styles.product}>
@@ -45,7 +50,8 @@ const Product = ({ product, className, ...props }: ProductProps): JSX.Element =>
 				</div>
 				<div className={styles.priceTitle}>Price</div>
 				<div className={styles.creditTitle}>Credit</div>
-				<div className={styles.rateTitle}>{product.reviewCount} reviews</div>
+				<div className={styles.rateTitle}>
+					 {product.reviewCount} <a href='#review' onClick={()=> scrollToReview()}>{dedectedReview(product.reviewCount)}</a></div>
 
 				<Divider className={styles.hr} />
 
@@ -93,6 +99,7 @@ const Product = ({ product, className, ...props }: ProductProps): JSX.Element =>
 			</Card>
 			<Card
 				color='white'
+				ref={reivewRef}
 				className={cn(styles.review, {
 					[styles.opened]: reviewOpen,
 					[styles.closed]: !reviewOpen,
