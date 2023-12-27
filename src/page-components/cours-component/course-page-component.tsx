@@ -3,18 +3,33 @@ import styles from './course-page-component.module.css';
 import cn from 'classnames';
 import { Adventags, Heading,  HhData,  Product,  Sort,  Tag, Text } from '../../components';
 import { CoursePageComponentProps } from './course-page-component-props';
-import { useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import { sortReducer } from './sort.reducer';
 import { SortEnum } from '../../components/sort/sort.props';
+import {AnimatePresence} from 'framer-motion'
 
-
-const CoursePageComponent = ({ firstCategory, page, products }: CoursePageComponentProps): JSX.Element => {
+const CoursePageComponent = ({  page, products }: CoursePageComponentProps): JSX.Element => {
  
 	const [ state , dispatch] = useReducer(sortReducer,{sort:SortEnum.Rating,products:products})
 	const setSort = (sort:SortEnum)=>{
 		dispatch({type:sort})
 	}
 	
+	useEffect(()=>{
+		dispatch({type:'reset',initialState:products})
+	},[products])
+
+
+	 const spring = {
+    type: "spring",
+    stiffness: 500,
+    damping: 10
+  };
+  const animations = {
+    initial: { scale: 0 },
+    animate: { scale: 1 },
+    exit: { scale: 1 },
+  };
 	return (
 		<div className={styles.wrapper}>
 			{/* TITLE */}
@@ -24,7 +39,10 @@ const CoursePageComponent = ({ firstCategory, page, products }: CoursePageCompon
 			</div>
 
 			{/* PRODUCTS */}
-  {products.length && products.map( (c,idx) => ( <Product product={c}/>)) }  
+			<AnimatePresence >
+				{state.products.length && state.products.map( (c,idx) => ( <Product key={idx} product={c}  {...animations} layout transition={spring}/>)) } 
+			</AnimatePresence>
+   
 
 			{/* VACATIONS */}
 			<div className={styles.hhTitle}>

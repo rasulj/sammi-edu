@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { ForwardedRef, forwardRef, useRef, useState } from 'react'
 import styles from './product.module.css'
 import { ProductProps } from './product.props'
 import Card from '../card/card'
@@ -7,11 +7,11 @@ import Tag from '../tag/tag'
 import cn from 'classnames'
 import { convertToUSD, dedectedReview } from '../../helpers/helpers'
 import Rating from '../rating/rating'
-import { Button, Divider, Input, Review, ReviewForm, TextArea } from '..'
+import { Button, Divider,  Review, ReviewForm,} from '..'
+import {motion} from 'framer-motion'
 
 
-
-const Product = ({ product, className, ...props }: ProductProps): JSX.Element => {
+const Product =  motion( forwardRef(({ product, className, ...props }: ProductProps, ref:ForwardedRef<HTMLDivElement>): JSX.Element => {
 	const [reviewOpen, setReviewOpen] = useState<boolean>(false);
 
   const reivewRef = useRef<HTMLDivElement>(null)
@@ -20,7 +20,7 @@ const Product = ({ product, className, ...props }: ProductProps): JSX.Element =>
 		reivewRef.current?.scrollIntoView({behavior:'smooth' ,block:"start"})
 	}
 	return (
-		<div className={className} {...props}>
+		<div className={className} {...props} ref={ref}>
 			<Card color='primary' className={styles.product}>
 				<div className={styles.logo}>
 					<Image src={product.images} alt={product.title} width={70} height={70} />
@@ -117,6 +117,6 @@ const Product = ({ product, className, ...props }: ProductProps): JSX.Element =>
 
 		</div>
 	);
-};
+}))
 
 export default Product;
