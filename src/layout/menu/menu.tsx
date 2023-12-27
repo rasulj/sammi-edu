@@ -6,14 +6,49 @@ import { firstLevelMenu } from '../../helpers/constants'
 import Link from 'next/link'
 import { IFirstLevelMenu, PageItem } from '../../interfaces/menu.interface'
 import { useRouter } from 'next/router'
-
+import {motion} from 'framer-motion'
 
 
 
 const Menu = () => {
 
   const { menu,setMenu,firstCategory} = useContext(AppContext)
-
+ const variants ={
+  hidden:{
+    marginBottom: 0,
+     
+  },
+  visible:{
+    marginBottom: 20,
+    transition: {
+        when: 'beforeChildren',
+        staggerChildren: 0.1,
+      },
+  }
+ }
+  const childrenVariants={
+  hidden:{
+     overflow: 0,
+      height: 0
+  },
+  visible:{
+    marginBottom: 20,
+    transition: {
+        when: 'beforeChildren',
+        staggerChildren: 0.1,
+      },
+  }
+ }
+   const variantsChildren = {
+    visible: {
+      opacity: 1,
+      height: 30,
+    },
+    hidden: {
+      opacity: 0,
+      height: 0,
+    },
+  };
 const router = useRouter()
  
 const openSecondBlock = ( category:string) =>{
@@ -58,9 +93,8 @@ const bulidSecondLevel = (menuItem: IFirstLevelMenu)=>{
  }
       return  <div key={m._id.secondCategory}>
           <div  className={cn(style.secondLevel)} onClick={()=> openSecondBlock(m._id.secondCategory)}> {m._id.secondCategory} </div>
-          <div  className={cn(style.secondLevelBlock ,{
-            [style.secondLevelBlockActive]:m.isOpened
-          })} > {bulidThirdLevel(m.pages,menuItem.route)}  </div>
+          <motion.div  variants={variants}  layout initial={m.isOpened ?'visible' : 'hidden'} animate={m.isOpened ?'visible' : 'hidden'}
+           className={cn(style.secondLevelBlock )} > {bulidThirdLevel(m.pages,menuItem.route)}  </motion.div> 
         </div>
         })}
     </div>
@@ -68,11 +102,14 @@ const bulidSecondLevel = (menuItem: IFirstLevelMenu)=>{
 }
 const bulidThirdLevel = (page:PageItem[] ,route:string)=>{
    return page.map(m =>(
-    <Link href={`/${route}/${m._id}`} className={cn(style.thirdLevel , {
+    <motion.div variants={variantsChildren}  key={m._id}>
+       <Link href={`/${route}/${m._id}`} className={cn(style.thirdLevel , {
       [style.thirdLevelActive]:`/${route}/${m._id}` == router.asPath
     })}>
       {m.title}
     </Link>
+    </motion.div>
+   
    ))
 }
   return (

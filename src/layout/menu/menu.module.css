@@ -48,13 +48,21 @@
 .secondLevelBlock {
 	overflow: hidden;
 }
- .secondLevelBlock {
+.tes{
+	margin-bottom: S;
+	overflow: hidden
+	0;
+	height: 0;
+	opacity:s ;
+}
+ /* .secondLevelBlock {
 	display: none;
+	
 }
 
 .secondLevelBlockActive {
 	display: block;
-} 
+}   */
 
  .thirdLevel {
 	margin-bottom: 10px;
