@@ -130,6 +130,10 @@
 	border-bottom: 1px dashed var(--gray-light);
 	margin-bottom: 5px;
 }
+.review{
+	
+	padding: 20px;
+}
 
 .reviewBtn {
 	margin-left: 15px;

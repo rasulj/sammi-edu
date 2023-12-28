@@ -19,6 +19,16 @@ const Product =  motion( forwardRef(({ product, className, ...props }: ProductPr
 		setReviewOpen(true)
 		reivewRef.current?.scrollIntoView({behavior:'smooth' ,block:"start"})
 	}
+	const variants = {
+		hidden:{
+			height:0,
+			opacity:0 
+		},
+		visible:{
+			height:'auto',
+			opacity:1 
+		}
+	}
 	return (
 		<div className={className} {...props} ref={ref}>
 			<Card color='primary' className={styles.product}>
@@ -97,13 +107,11 @@ const Product =  motion( forwardRef(({ product, className, ...props }: ProductPr
 					</Button>
 				</div>
 			</Card>
+			<motion.div  variants={variants} animate={reviewOpen ? 'visible': 'hidden'}>
 			<Card
 				color='white'
 				ref={reivewRef}
-				className={cn(styles.review, {
-					[styles.opened]: reviewOpen,
-					[styles.closed]: !reviewOpen,
-				})}
+				className={cn(styles.review,)}
 			>
 				{product.reviews.map(r => (
 					<div key={r._id}>
@@ -112,9 +120,8 @@ const Product =  motion( forwardRef(({ product, className, ...props }: ProductPr
 					</div>
 				))}
 				<ReviewForm productid={product._id} />
-			</Card>
-  
-
+			</Card>			
+			</motion.div>
 		</div>
 	);
 }))

@@ -5,6 +5,7 @@ import { LayoutProps } from "./layout.props"
 import Sidebar from "./sidebar/sidebar"
 import styles from './layout.module.css'
 import { AppContextProvider, IAppContext } from "../context/app.context"
+import { ScrolUP } from "../components"
 
 
 const Layout = ({children ,className ,...props}:LayoutProps):JSX.Element => {
@@ -15,6 +16,7 @@ const Layout = ({children ,className ,...props}:LayoutProps):JSX.Element => {
         <Sidebar  className={styles.sidebar} />
         <div className={styles.body} > {children}</div>
         <Footer className={styles.footer} />
+         <ScrolUP/>
      </div>
   )
 }
