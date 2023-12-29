@@ -11,7 +11,7 @@
 }
 
  .header {
-	display: none;
+
 	grid-area: header;
 	
 } 
@@ -38,9 +38,9 @@
 		display: none !important;
 	}
 
-	.header {
+	/* .header {
 		display: block;
-	}
+	} */
 
 	.body {
 		padding: 15px;

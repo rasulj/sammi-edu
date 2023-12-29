@@ -1,4 +1,5 @@
-import { DetailedHTMLProps, HtmlHTMLAttributes } from "react";
+
+ import { DetailedHTMLProps, HtmlHTMLAttributes } from "react";
 import up from './icons/up.svg'
 import close from './icons/close.svg'
 import menu from './icons/menu.svg'

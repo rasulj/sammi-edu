@@ -1,0 +1,30 @@
+
+ .header {
+	display: none;
+}
+.mobileMenu{
+	position: fixed;
+	background-color: var(--white);
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow-y: scroll;
+	z-index: 10;
+}
+
+.iconClose{
+	position: fixed;
+	top: 10px;
+	right: 10px;
+	z-index: 11;
+}
+
+@media screen and (max-width:900px) {
+	.header{
+		display: grid;
+		grid-template-columns: 1fr 40px;
+		margin: 15px 15px 0 15px;
+		gap: 10px;
+	}
+}  
