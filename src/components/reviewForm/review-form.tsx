@@ -4,14 +4,18 @@ import Input from '../input/input';
 import Rating from '../rating/rating';
 import { useState } from 'react';
 import { Button, TextArea } from '..';
-import { IReviewResponse, ReviewFormProps } from './review-form.props';
+import { ReviewFormProps } from './review-form.props';
 import { Controller, useForm } from 'react-hook-form';
-import { IReviewForm } from './review-form.interface';
+import { IReviewForm, IReviewResponse } from './review-form.interface';
 import axios from 'axios';
 import CloseIcon from './close.svg'
+import Error from './error';
+import Success from './succes';
 const ReivewForm = ({ productid, className, ...props }: ReviewFormProps): JSX.Element => {
+
 	 const [error, setError] =  useState<boolean>(false)
 	 const [isSuccess , setIsSuccess] = useState<boolean>(false)
+   
       const {register, control,handleSubmit,formState:{errors},reset}= useForm<IReviewForm>()
 
   const onSubmit = async (formData: IReviewForm) => {
@@ -52,20 +56,9 @@ const ReivewForm = ({ productid, className, ...props }: ReviewFormProps): JSX.El
 				<span className={styles.info}>* Your review will be moderated and reviewed before being published.</span>
 			</div>
 		</div>
-		    {isSuccess && (
-        <div className={cn(styles.success, styles.panel)}>
-          <div className={styles.successTitle}>Review sent successfully</div>
-          <div>Thanks your review will published after testing</div>
-          <CloseIcon className={styles.close} onClick={() => setIsSuccess(false)} />
-        </div>
-      )}
+	{isSuccess && <Success setIsSuccess={setIsSuccess} />}
 
-      {error && (
-        <div className={cn(styles.error, styles.panel)}>
-          <div className={styles.successTitle}>Something wen wrong</div>
-          <CloseIcon className={styles.close} onClick={() => setError(false)} />
-        </div>
-      )}
+			{error && <Error setError={setError} />}
 		</form>
 		
 	);

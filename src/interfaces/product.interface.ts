@@ -1,5 +1,4 @@
 export interface ProductModel {
-    [x: string]: any;
     alias: string;
     title: string;
     _id: string;

@@ -11,7 +11,7 @@ import { Button, Divider,  Review, ReviewForm,} from '..'
 import {motion} from 'framer-motion'
 
 
-const Product =  motion( forwardRef(({ product, className, ...props }: ProductProps, ref:ForwardedRef<HTMLDivElement>): JSX.Element => {
+const Product = motion( forwardRef(({ product, className, ...props }: ProductProps, ref:ForwardedRef<HTMLDivElement>): JSX.Element => {
 	const [reviewOpen, setReviewOpen] = useState<boolean>(false);
 
   const reivewRef = useRef<HTMLDivElement>(null)

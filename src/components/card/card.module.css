@@ -6,3 +6,6 @@
 .primary{
     background-color: var(--white);
 }
+.white{
+    background-color: var(--green-light);
+}

@@ -1,7 +1,7 @@
 
 import styles from './course-page-component.module.css';
 import cn from 'classnames';
-import { Adventags, Heading,  HhData,  Product,  Sort,  Tag, Text } from '../../components';
+import { Adventages, Heading,  HhData,  Product,  Sort,  Tag, Text } from '../../components';
 import { CoursePageComponentProps } from './course-page-component-props';
 import { useEffect, useReducer } from 'react';
 import { sortReducer } from './sort.reducer';
@@ -59,7 +59,7 @@ const CoursePageComponent = ({  page, products }: CoursePageComponentProps): JSX
 				{ page.advantages.length && (
 					<>
 					 <Heading tag='h2' > Adventages</Heading>
-					<Adventags adventages={page.advantages}/>
+					<Adventages adventages={page.advantages}/>
 					</>
 				)}
 				      {/*Description*/}

@@ -1,7 +1,6 @@
-
 import { Divider } from '..'
-import styles from './adventags.module.css'
-import { AdventagesProps } from './adventags.props'
+import styles from './adventages.module.css'
+import { AdventagesProps } from './adventages.props'
 import CheckIcon from './check.svg'
 
 
