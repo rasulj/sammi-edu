@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 export interface SeoProps {
-    children: ReactNode;
+    children?: ReactNode;
     metaTitle?: string;
     metaDescription?: string;
     metaKeyword?: string;
