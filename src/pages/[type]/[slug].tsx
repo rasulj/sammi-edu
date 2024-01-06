@@ -6,14 +6,18 @@ import { withLayout } from "../../layout/layout"
 import { firstLevelMenu } from "../../helpers/constants"
 import { PageModel } from "../../interfaces/page.interface"
 import { CoursePageComponent } from "../../page-components"
+import Seo from "../../layout/seo/seo"
 
+  
 
 const Index = ({ page,product ,firstCategory}:PageProps) => {
 
   return (
-    <div>
-      <CoursePageComponent page={page} products={product} firstCategory={firstCategory}/>
-    </div>
+    <Seo metaTitle={page.title} metaDescription={page.description} metaKeyword={page.tags.toString()} >
+       <CoursePageComponent page={page} products={product} firstCategory={firstCategory}/>
+    </Seo>
+     
+    
   )
 }
 

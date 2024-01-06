@@ -5,6 +5,7 @@ import { HomePageComponent } from "../page-components"
 import { PageCategory } from "../interfaces/page.interface"
 import axios from "axios"
 import { MenuItem } from "../interfaces/menu.interface"
+import Seo from "../layout/seo/seo"
 
 
 const index = () => {
@@ -12,7 +13,10 @@ const index = () => {
   
   
   return <>
-  <HomePageComponent/>
+  <Seo>
+      <HomePageComponent/>
+  </Seo>
+
   </>
   
 }
