@@ -1,5 +1,5 @@
-import styles from './diveder.module.css'
-import { DividerProps } from './divider.props'
+import styles from './divedir.module.css'
+import { DividerProps } from './dividir.props'
 import cn from 'classnames'
 const Dividir = ({className , ...props}:DividerProps) => {
   return (

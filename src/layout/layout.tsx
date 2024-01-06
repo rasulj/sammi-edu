@@ -6,6 +6,7 @@ import Sidebar from "./sidebar/sidebar"
 import styles from './layout.module.css'
 import { AppContextProvider, IAppContext } from "../context/app.context"
 import { ScrolUP } from "../components"
+import { useRouter } from "next/router"
 
 
 const Layout = ({children ,className ,...props}:LayoutProps):JSX.Element => {
@@ -24,12 +25,18 @@ const Layout = ({children ,className ,...props}:LayoutProps):JSX.Element => {
 export const withLayout =  <T extends Record<string,unknown> & IAppContext >(Component:FunctionComponent<T>)=>{
  
   return  function loyoutComponent (props:T){
+  const router = useRouter()
+   return(
+      <AppContextProvider menu={props.menu} firstCategory={props.firstCategory}>
+        { router.asPath === '/' ? (<Component {...props}/>):(
+         <Layout>
+      <Component {...props}/>
+     </Layout>    
+        )}
+   
+    </AppContextProvider>
+   )
 
-   return <AppContextProvider menu={props.menu} firstCategory={props.firstCategory}>
-     <Layout>
-     <Component {...props}/>
-    </Layout>
-   </AppContextProvider>
   
        
   }

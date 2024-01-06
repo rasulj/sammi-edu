@@ -4,8 +4,8 @@ import { MenuItem, } from "../../interfaces/menu.interface"
 import { ProductModel } from "../../interfaces/product.interface"
 import { withLayout } from "../../layout/layout"
 import { firstLevelMenu } from "../../helpers/constants"
-import CoursePageComponent from "../../page-components/cours-component/course-page-component"
 import { PageModel } from "../../interfaces/page.interface"
+import { CoursePageComponent } from "../../page-components"
 
 
 const Index = ({ page,product ,firstCategory}:PageProps) => {

@@ -1,0 +1,73 @@
+
+.hero {
+	height: 90vh;
+	margin-top: 10vh;
+	background-image: url(./bg.png);
+	background-position: center;
+    background-size: cover;
+	padding: 0 30px;
+	display: grid;
+	grid-template-columns: 50% 50%;
+	align-items: center;
+	overflow: hidden;
+}
+.heroTitle{
+    color: #fff;
+}
+.heroTitle h1{
+    font-size: 60px;
+    line-height: 80px;
+    margin-bottom: 10px;
+}
+.heroTitle p{
+    margin-bottom: 10px;
+}
+.compony{
+    padding: 0 30px;
+   text-align: center;
+
+ }
+.componyIcon{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+} 
+.timeline{
+    text-align: center;
+    width: 75%;
+    margin: 50px auto;
+}
+.componyIcon svg{
+    margin-top: 30px;
+}
+.mobileTimeline{
+    display: none;
+}
+@media screen and (max-width:700px){
+     .hero {
+		grid-template-columns: 100%;
+		align-items: self-start;
+	}
+    .heroImage{
+        display: none;
+    }
+    .timelineCard{
+        display: none;
+    }
+    .mobileTimeline{
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+}
+.mobileTimeline .card {
+		margin-top: 20px;
+		border-left: 5px solid var(--primary);
+	}
+	.timeline {
+		width: 98%;
+	}
+  
+}
